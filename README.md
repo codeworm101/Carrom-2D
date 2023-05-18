@@ -12,3 +12,7 @@ It contains:-
 3)CarromAI - Its a simple AI implementation which takes note of all the coins currently on board and calculates their position after which it chooses a coin it prefers and shoots
 
 4)SoundManager - It Manages all the Background music strike shots and coin hitting the striker
+
+![WelcomeScreen](https://github.com/codeworm101/Carrom-2D/assets/96073821/e6965c1f-a7fc-4603-a7be-fc91f98e6d85)
+![GameScreen](https://github.com/codeworm101/Carrom-2D/assets/96073821/4380349f-bdc2-434f-9d79-0a9e39794b33)
+![GameOverScreen](https://github.com/codeworm101/Carrom-2D/assets/96073821/d5cf5253-1428-44ad-baee-5713f64a70d1)
