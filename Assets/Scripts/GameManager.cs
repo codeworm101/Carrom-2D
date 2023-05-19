@@ -18,11 +18,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject player1;
     public GameObject player2;
-    public List<GameObject> pockets;
-    public List<GameObject> coins;
+    public List<GameObject> pockets; // List of pocket game objects
+    public List<GameObject> coins; // List of coin game objects
 
-    public Vector3[] pocketPositions;
-    public Vector3[] coinPositions;
+    public Vector3[] pocketPositions; // Array to store pocket positions
+    public Vector3[] coinPositions; // Array to store coin positions
 
     public static float player1Score;
     public static float player2Score;
@@ -41,18 +41,22 @@ public class GameManager : MonoBehaviour
     {
        DontDestroyOnLoad(transform.gameObject);
        // carromAI = GameObject.FindObjectOfType<CarromAI>();
+        // Initialize the pocketPositions and coinPositions arrays with the same size as the pockets and coins arrays
         pocketPositions = new Vector3[pockets.Count];
         coinPositions = new Vector3[coins.Count];
 
+        // Store the initial positions of the pocket game objects
         for (int i = 0; i < pockets.Count; i++)
         {
             pocketPositions[i] = pockets[i].transform.position;
         }
 
+        // Store the initial positions of the coin game objects
         for (int i = 0; i < coins.Count; i++)
         {
             coinPositions[i] = coins[i].transform.position;
         }
+        // Activate the first player and deactivate the second player
         player1.SetActive(true);
         player2.SetActive(false);
     }
@@ -112,10 +116,13 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
 
+        // Update the positions of the coin game objects
         for (int i = 0; i < coins.Count; i++)
         {
             coinPositions[i] = coins[i].transform.position;
         }
+        // Check if a turn is in progress
+            // Check if the player has pressed the space bar
         if(Input.GetMouseButtonUp(0)&&!isSliderClicked)
         {
             StartCoroutine(WaitForTurnToFinish());
@@ -136,15 +143,19 @@ public class GameManager : MonoBehaviour
         CarromAI carromAI = GetComponent<CarromAI>();
         isTurnInProgress = true;
 
+        // Deactivate the current player
         if (isPlayer1Turn)
             player1.SetActive(false);
         else
             player2.SetActive(false);
 
+        // Wait for a short duration to indicate the transition
         yield return new WaitForSeconds(0.5f);
 
+        // Switch turns between players
         isPlayer1Turn = !isPlayer1Turn;
 
+        // Activate the next player
         if (isPlayer1Turn)
         {
             player1.transform.position = new Vector3(0, -2.2f, 0);
@@ -156,7 +167,7 @@ public class GameManager : MonoBehaviour
             player2.transform.position = new Vector3(0, 2.2f, 0);
             player2.SetActive(true);
         }
-
+        // Reset turn in progress flag
         isTurnInProgress = false;
     }
 

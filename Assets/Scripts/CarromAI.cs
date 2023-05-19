@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CarromAI : MonoBehaviour
 {
-    public float moveDelay = 1f; 
+    public float moveDelay = 1f;  // Delay between AI moves
 
     public GameManager gameManager;
     public bool isMyTurn;
@@ -45,6 +45,10 @@ public class CarromAI : MonoBehaviour
 
     public void MakeAIMove()
     {
+        // Implement your AI logic here to make a move on the carrom board
+        // You can access the carrom board and other necessary game objects through the gameManager reference
+
+        // Example: Randomly select a pocket and a coin to shoot
         int pocketIndex = Random.Range(0, gameManager.pockets.Count);
         int coinIndex = Random.Range(0, gameManager.coins.Count);
         Debug.Log(gameManager.coinPositions[coinIndex].x);
@@ -54,6 +58,7 @@ public class CarromAI : MonoBehaviour
         //rb.AddForce(direction * 1000, ForceMode2D.Impulse);
 
 
+        // Shoot the selected coin towards the selected pocket
        // gameManager.ShootCoin(gameManager.coinPositions[coinIndex], gameManager.pocketPositions[pocketIndex]);
     }
 
