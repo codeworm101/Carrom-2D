@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public int winner;
     public bool enemydone = false;
     public bool playerdone = false;
+    public bool isSliderClicked = false;
 
     //public CarromAI script;
     //public StrikerController slider;
@@ -122,7 +123,7 @@ public class GameManager : MonoBehaviour
         }
         // Check if a turn is in progress
             // Check if the player has pressed the space bar
-        if(Input.GetMouseButtonUp(0))
+        if(Input.GetMouseButtonUp(0)&&!isSliderClicked)
         {
             StartCoroutine(WaitForTurnToFinish());
         }
